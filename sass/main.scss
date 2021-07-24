@@ -1,0 +1,18 @@
+@import "../node_modules/bootstrap/scss/bootstrap.scss";
+
+.item{
+    width: 50%;
+    text-align: center;
+    margin-top: 10rem;
+    border: 1px solid blue;
+    padding: 1rem;
+        &_link{
+            margin: 1rem;
+            padding: 1rem;
+            border: 1px solid green;
+                &_logo{
+                    padding: 1rem;
+                    border: 1px solid hotpink;
+                }
+        }
+}

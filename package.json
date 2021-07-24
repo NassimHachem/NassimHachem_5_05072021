@@ -1,0 +1,23 @@
+{
+  "name": "nassimhachem_5_05072021",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "sass": "sass --watch ./sass/main.scss:css/style.css -w --style compressed",
+    "prefix": "postcss css/style.css --use autoprefixer -d css/prefixer"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NassimHachem/NassimHachem_5_05072021.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/NassimHachem/NassimHachem_5_05072021/issues"
+  },
+  "homepage": "https://github.com/NassimHachem/NassimHachem_5_05072021#readme",
+  "dependencies": {
+    "bootstrap": "^5.0.2"
+  }
+}
