@@ -1,6 +1,8 @@
-fetch(`http://localhost:3000/api/teddies/`)
+fetch('http://localhost:3000/api/teddies/')
     .then(response => response.json())
     .then(data => {
+        console.log(data.length)
+
 
         let card = $("#product_card");
 
@@ -22,11 +24,10 @@ fetch(`http://localhost:3000/api/teddies/`)
                                 </select>
                             </div>
                         </form>
-                        <a href="produits.html?${data[i]._id}" class="btn btn-secondary"> Acheter : ` + data[i].price / 100 + `,00€</a>
+                        <a href="produits.html?${data[i]._id}" class="btn btn-primary"> Acheter : ` + data[i].price / 100 + `,00€</a>
                     </div>
                 </div>`;
             card.append(element);
-
         }
 
     })

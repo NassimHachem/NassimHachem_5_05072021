@@ -18,7 +18,6 @@
   },
   "homepage": "https://github.com/NassimHachem/NassimHachem_5_05072021#readme",
   "dependencies": {
-    "bootstrap": "^5.0.2",
-    "typescript": "^4.3.5"
+    "bootstrap": "^5.0.2"
   }
 }
