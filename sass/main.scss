@@ -50,6 +50,12 @@ a{
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
+
+        &_selected{
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
     }
 }
 
