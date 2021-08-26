@@ -22,7 +22,7 @@ fetch('http://localhost:3000/api/teddies/')
                                 </select>
                             </div>
                         </form>
-                        <a href="produits.html?${data[i]._id}" class="btn btn-secondary"> Acheter : ` + data[i].price / 100 + `,00€</a>
+                        <button class="btn btn-secondary"><a href="produits.html?${data[i]._id}"> Acheter : ` + data[i].price / 100 + `,00€<a/></button>
                     </div>
                 </div>`;
             card.append(element);
