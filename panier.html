@@ -5,7 +5,7 @@
     <link rel="stylesheet" href="css/style.css">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <title>Produits</title>
+    <title>Panier</title>
 
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
         integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
@@ -46,7 +46,29 @@
 
     <div class="container">
         <div class="row">
-            <div class="product_card_selected" id="product_card_selected">
+            <div class="produits_panier" id="produits_panier">
+                <h2 class="order_title" id="order_title">Votre commande</h2>
+
+                <div class="order" id="order">
+                    <table class="table table-light table-bordered">
+                        <thead>
+                            <tr>
+                                <th scope="col">Nom du produit</th>
+                                <th scope="col">Couleur</th>
+                                <th scope="col">Prix</th>
+                                <th scope="col">Total</th>
+                            </tr>
+                        </thead>
+                        <tbody id="table_order">
+
+
+                        </tbody>
+                        <tr>
+                            <td colspan="3">TOTAL</td>
+                            <td id="priceTotal"></td>
+                        </tr>
+                    </table>
+                </div>
 
             </div>
         </div>
@@ -59,8 +81,7 @@
             </div>
         </div>
     </footer>
-    <script src="Js/index.js"></script>
-    <script src="Js/produits.js"></script>
+    <script src="Js/panier.js"></script>
 </body>
 
 </html>

@@ -10,6 +10,7 @@ footer{
     width: 100%;
     margin-right: 0;
     
+    
         .footer-text{
             text-align: center;
             padding: 3rem;
@@ -66,4 +67,47 @@ a{
         width: 100%;
         height: 155px;
     }
+}
+.btn-send{
+    margin: 1.53rem 0;
+}
+
+.order_title{
+    margin: 1rem 0;
+}
+
+.panier_vide{
+    text-align: center;
+    width: 100%;
+    border: 1px solid grey;
+    display: flex;
+    justify-content: center;
+    
+    margin-bottom: 23.5rem;
+}
+
+.recapCommande{
+    width: 50%;
+    border: 1px solid black;
+    margin: 2rem auto;
+    text-align: center;
+    
+}
+
+.messageCommande{
+    text-align: center;
+    p:nth-child(1){
+        font-size: 1.5rem;
+        font-weight: 500;
+        color: rgb(26, 207, 26);
+    }
+}
+.gras{
+    font-weight: 900;
+}
+
+.infosManquante{
+    font-style: italic;
+    color: red;
+    font-size: 0.6rem;
 }
