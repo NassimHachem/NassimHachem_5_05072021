@@ -25,23 +25,25 @@ if (storageProducts) {
 } else {
     panierVide.innerHTML = '<span class="panier_vide">Votre Panier est vide</span>';
 }
-
+// création de la variable de calcul du prix total
 let priceTotalCalcul = [];
 
 for (let l = 0; l < storageProducts.length; l++) {
     let priceOrder = storageProducts[l].price;
     priceTotalCalcul.push(priceOrder);
 }
-
+// calcul des prix et création du prix total
 const addition = (accumulator, currentValue) => accumulator + currentValue;
 const priceTotal = priceTotalCalcul.reduce(addition);
 
 
-
+//on affiche sur notre page le prix total
 const priceHtml = document.querySelector('#priceTotal');
 priceHtml.innerHTML = `${priceTotal},00€`;
 localStorage.setItem("priceTotal", JSON.stringify(priceTotal));
 
+
+//affichage du formulaire
 const affichageForm = () => {
 
     const positionForm = document.querySelector('#order');
@@ -92,12 +94,13 @@ const affichageForm = () => {
 
 affichageForm();
 
+//création de la varible qu'on va écouter 
 const btnCommande = document.querySelector('#btn-commande');
 
 btnCommande.addEventListener('click', (event) => {
     event.preventDefault();
 
-    //récupère les infos du formulaire
+    //récupère les infos du formulaire et les place dans contact
     const contact = {
         lastName: document.querySelector('#nom').value,
         firstName: document.querySelector('#prenom').value,
@@ -106,7 +109,7 @@ btnCommande.addEventListener('click', (event) => {
         city: document.querySelector('#ville').value,
 
     };
-    //Validation contact
+    //Gestion des regex 
 
     const regExPrenomNomVille = (value) => {
         return /^[A-Za-z\-çéèêà]{3,20}$/.test(value);
@@ -119,7 +122,7 @@ btnCommande.addEventListener('click', (event) => {
     }
 
     function lastNameControl() {
-        //Validation du contact
+        //Validation du nom
         const leNom = contact.lastName;
         if (regExPrenomNomVille(leNom)) {
             document.querySelector("#nomInfosManquante").textContent = "";
@@ -131,7 +134,7 @@ btnCommande.addEventListener('click', (event) => {
 
     }
     function firstNameControl() {
-        //Validation du contact
+        //Validation du prenom
         const lePrenom = contact.firstName;
         if (regExPrenomNomVille(lePrenom)) {
             document.querySelector("#prenomInfosManquante").textContent = "";
@@ -143,7 +146,7 @@ btnCommande.addEventListener('click', (event) => {
 
     }
     function emailControl() {
-        //Validation du code Postal
+        //Validation de l'email
         const lemail = contact.email;
         if (regExEmail(lemail)) {
             document.querySelector("#emailInfosManquante").textContent = "";
@@ -155,7 +158,7 @@ btnCommande.addEventListener('click', (event) => {
 
     }
     function addressControl() {
-        //Validation du code Postal
+        //Validation de l'adresse
         const ladresse = contact.address;
         if (regExAdresse(ladresse)) {
             document.querySelector("#adresseInfosManquante").textContent = "";
@@ -168,7 +171,7 @@ btnCommande.addEventListener('click', (event) => {
     }
 
     function cityControl() {
-        //Validation du contact
+        //Validation de la ville
         const laVille = contact.city;
         if (regExPrenomNomVille(laVille)) {
             document.querySelector("#villeInfosManquante").textContent = "";
@@ -183,7 +186,7 @@ btnCommande.addEventListener('click', (event) => {
 
 
 
-
+    //condition tout doit être correct avant d'être envoyé dans le localStorage
     if (firstNameControl() && lastNameControl() && cityControl() && emailControl() && addressControl()) {
         //mettre les données du formulaire dans le local storage
         localStorage.setItem("contact", JSON.stringify(contact));
@@ -191,18 +194,18 @@ btnCommande.addEventListener('click', (event) => {
 
     }
 
+    //création de products pour recevoir une réponse du serveur
     let products = [];
+    //on push le products dans le localStorage
     products.push;
 
-
-
-
-
+    //création de aEnvoyer pour regrouper les deux variable à envoyer
     const aEnvoyer = {
         contact, products
 
     };
 
+    //option va servir dans le fetch pour envoyer les données au serveur et recevoir une reponse 
     const option = {
         method: 'POST',
         body: JSON.stringify(aEnvoyer),
@@ -213,7 +216,18 @@ btnCommande.addEventListener('click', (event) => {
 
     fetch('http://localhost:3000/api/teddies/order', option)
         .then(res => res.json())
-        .then(data => console.table(data));
+        .then(data => {
+            console.table(data);
+            console.log(data.orderId);
+
+            //mettre l'id dans le localStorage
+            localStorage.setItem('orderId', data.orderId);
+
+            //rediection vers la page confirmation.html
+            window.location = "confirmation.html";
+        });
+
+
 
 
 
